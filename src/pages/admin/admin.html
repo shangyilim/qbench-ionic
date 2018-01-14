@@ -1,0 +1,96 @@
+<!--
+  Generated template for the AdminPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Queue List</ion-title>
+    <ion-buttons end *ngIf="user">
+      <span class="userinfo">
+        {{user.displayName}}
+         <img [src]="user.photoURL" class="avatar"/>
+      </span>
+    </ion-buttons>
+  </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="user">
+    <div class="grid">
+      <div>
+        <h2>Waiting</h2>
+        <ion-list>
+          <ion-item *ngFor="let waitingQueue of waitingQueuesObservable | async as waitingQueues">
+            <div class="horizontal-container">
+              <span class="queue-number">  # {{ waitingQueue.queNumber }} </span>
+              <div [class]="'status-'+waitingQueue.status+' chip-md chip-item'">
+                <label>{{ waitingQueue.status }}</label>
+              </div>
+              <span class="item"> <ion-icon name="md-people" class="smaller-ion-icon"></ion-icon> {{ waitingQueue.totalPeople }}</span>
+              <span class="item"> <ion-icon name="md-person"class="smaller-ion-icon"></ion-icon> {{ waitingQueue.displayName }}</span>
+              <span class="item" style="min-width:100px"> <ion-icon name="md-call"  class="smaller-ion-icon"></ion-icon>
+                    {{  waitingQueue.phoneNumber ? waitingQueue.phone-number : '-' }}
+              </span>
+
+              <div>
+                <button ion-button icon-left (click)="ready(waitingQueue)">
+                  <ion-icon name="md-checkmark-circle"></ion-icon>
+                  Ready
+                </button>
+                <button ion-button icon-left color="orange" (click)="remind(waitingQueue)">
+                  <ion-icon name="md-megaphone"></ion-icon>
+                  Remind ({{ waitingQueue.reminderCounter }})
+                </button>
+                <button ion-button icon-left color="danger" (click)="cancel(waitingQueue)">
+                  <ion-icon name="md-close"></ion-icon>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div>
+        <h2>Ready</h2>
+        <ion-list>
+          <ion-item *ngFor="let readyQueue of readyQueuesObservable | async as readyQueues">
+            <div class="horizontal-container">
+              <span class="queue-number">  # {{ readyQueue.queNumber }} </span>
+              <div [class]="'status-'+readyQueue.status+' chip-md chip-item'">
+                <label>{{ readyQueue.status }}</label>
+              </div>
+              <span class="item"> <ion-icon name="md-people" class="smaller-ion-icon"></ion-icon> {{ readyQueue.totalPeople }}</span>
+              <span class="item"> <ion-icon name="md-person"class="smaller-ion-icon"></ion-icon> {{ readyQueue.displayName }}</span>
+              <span class="item"> <ion-icon name="md-call"  class="smaller-ion-icon"></ion-icon> 
+          {{  readyQueue.phoneNumber ? readyQueue.phone-number : '-' }}</span>
+            </div>
+            <div>
+              <div>
+                <span class="item"> <ion-icon name="md-time"class="smaller-ion-icon"></ion-icon> 
+                {{ getElapsedTime((currentTimeSubject | async),readyQueue.readyOn) }} mins</span>
+                <button ion-button icon-left color="green" (click)="complete(readyQueue)">
+                  <ion-icon name="md-checkmark-circle"></ion-icon>
+                  Completed
+                </button>
+                <button ion-button icon-left color="orange" (click)="remind(readyQueue)">
+                <ion-icon name="md-megaphone"></ion-icon>
+                Remind ({{ readyQueue.reminderCounter }})
+            </button>
+                <button ion-button icon-left color="danger" (click)="cancel(readyQueue)">
+                <ion-icon name="md-close"></ion-icon>
+                Cancel
+            </button>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+</ion-content>

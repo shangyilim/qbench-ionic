@@ -1,0 +1,32 @@
+page-add-queue {
+    .people-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            margin: 2em;
+        }
+    }
+    .item {
+        text-align: center;
+        .label {
+            font-size: inherit!important;
+            color: #000000;
+        }
+    }
+    .phone-input {
+        margin-top: 10px;
+        text-align: center;
+        input {
+            text-align:center!important;
+            font-size:1.5em;
+        }
+    }
+    .actions {
+        button {
+            margin-bottom:1em;
+        }
+    }
+}

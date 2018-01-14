@@ -1,0 +1,73 @@
+page-admin {
+    .avatar {
+            /* make a square container */
+        width: 25px;
+        height:25px;
+
+        /* fill the container, preserving aspect ratio, and cropping to fit */
+        background-size: cover;
+
+        /* center the image vertically and horizontally */
+        background-position: top center;
+
+        /* round the edges to a circle with border radius 1/2 container size */
+        border-radius: 50%;
+        margin-left:5px;
+        vertical-align: middle;
+
+    }
+    .userinfo {
+        color: color($colors, secondary);
+    }
+    .horizontal-container {
+        display:flex;
+        flex-direction: row;
+        align-items: center;
+        
+        .queue-number {
+            margin-right: 20px;
+            font-size:1.2em;
+        }
+    }
+    .vertical-container {
+        display:flex;
+        flex-direction:column;
+    }
+    .item {
+        margin-right:5px;
+        .smaller-ion-icon {
+            font-size: 1em;
+            min-height: 1.8rem;
+            color:grey;
+           
+        }
+        font-size:1em;
+    }
+    .chip-item {
+        min-width: 50px;
+        text-align:center;
+        margin-right:10px;
+    }
+    
+    .status-completed{
+        background-color: #388E3C;
+        color: #FFFFFF
+    }
+    .status-expired{
+        background-color: #D32F2F;
+        color: #FFFFFF
+    }
+    .status-delay{
+        background-color: #FFC107;
+        color: #FFFFFF
+    }
+    .status-ready{
+        background-color: color($colors, primary);
+        color: #FFFFFF
+    }
+    .grid{
+        display:grid;
+        grid-template-columns: 65% 35%;
+        grid-template-rows: 100%;
+    }
+}

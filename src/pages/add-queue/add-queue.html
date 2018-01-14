@@ -1,0 +1,40 @@
+<!--
+  Generated template for the AddQueuePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>New Queue</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-list>
+      <ion-item class="item">
+        <div>Total number of people</div>
+        <div class="people-container">
+          <button ion-button round outline><ion-icon name="md-remove" (click)="addPeople(-1)"></ion-icon></button>
+          <span style="font-size:3em">
+            {{ queue.totalPeople }}
+          </span>
+          <button ion-button round outline><ion-icon name="md-add" (click)="addPeople(1)"></ion-icon></button>
+        </div>
+      </ion-item>
+       <ion-item class="item" style="text-align:center!important;">
+         <ion-label  class="label" stacked>Phone No. (optional)</ion-label>
+        <ion-input type="text" class="phone-input" placeholder="012-1234561"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div class="actions">
+      <button ion-button  color="light" full>Cancel</button>
+    <button ion-button primary full (click)="save()">Create Queue</button>
+    </div>
+  </div>
+</ion-content>

@@ -1,3 +1,124 @@
 page-home {
+    .login-icon {
+        fill: color($colors, secondary);
+    }
+    .content {
+        font-weight: lighter;
+        background: color($colors, primary);
+        color: color($colors, light);
 
+        div {
+            display:flex;
+            flex-direction:column;
+            justify-content: flex-start;
+            align-content: center;
+            text-align: center;
+            padding: 0.5em;
+        }
+
+        button {
+            text-transform: none;
+        }
+    }
+    .logo {
+        
+        svg {
+            align-self: center;
+            animation: float 6s ease-in-out infinite;
+        }
+    }
+    
+    .main-content {
+        height: 70vh;
+        justify-content: center!important;
+        flex-direction: column;
+        
+    }
+    .login-button {
+        margin-top: 0;
+    }
+
+    .avatar {
+            /* make a square container */
+        width: 25px;
+        height:25px;
+
+        /* fill the container, preserving aspect ratio, and cropping to fit */
+        background-size: cover;
+
+        /* center the image vertically and horizontally */
+        background-position: top center;
+
+        /* round the edges to a circle with border radius 1/2 container size */
+        border-radius: 50%;
+        margin-left:5px;
+        vertical-align: middle;
+
+    }
+    .userinfo {
+        vertical-align: middle;
+        align-self: flex-end;
+        font-size:0.8em;
+    }
+    .footer {
+        height: 20vh;
+    }
+    .card-btn {
+        .button-effect {
+            display:none;
+        }
+        padding: 0!important;
+        
+    }
+    .card-content{
+        color:#000000;
+    }
+    .ahead {
+        ion-col {
+            font-size: 1.5em;
+        }
+    }
+    .status-ready{
+        background-color: color($colors, primary);
+        color: #FFFFFF
+    }
+    .status-completed{
+        background-color: #388E3C;
+        color: #FFFFFF
+    }
+    .status-expired{
+        background-color: #D32F2F;
+        color: #FFFFFF
+    }
+    .status-cancelled{
+        background-color: #D32F2F;
+        color: #FFFFFF
+    }
+    .status-delay{
+        background-color: #FFC107;
+        color: #FFFFFF
+    }
+
+    @keyframes float {
+        0% {
+            filter: drop-shadow( 0 5px 15px rgba(0,0,0,0.6));
+            transform: translatey(0px);
+        }
+        50% {
+            filter: drop-shadow( 0 25px 15px rgba(0,0,0,0.2));
+            transform: translatey(-20px);
+        }
+        100% {
+            filter: drop-shadow( 0 5px 15px rgba(0,0,0,0.6));
+            transform: translatey(0px);
+	    }
+   
+    }
+
+    .action-buttons {
+        display: grid !important;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 100%;
+        margin-top:-20px;
+    }
 }

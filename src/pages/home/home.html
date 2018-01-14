@@ -1,14 +1,114 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="content">
+  <div class="userinfo-container" *ngIf="user">
+    <span class="userinfo">
+        {{user.displayName}}
+         <img [src]="user.photoURL" class="avatar"/>
+      </span>
+
+
+  </div>
+  <div class="main-content">
+
+    <div class="logo">
+      <svg viewBox="0 0 105 80" height="5em" width="9em">
+        <defs id="defs4827" />
+        <g transform="translate(0,-201)" id="layer1">
+          <g transform="translate(-59.666611,108.67868)" id="g4773">
+            <path style="fill:#929395;stroke:#929395;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 73.327381,127.85565 c 0,24.47396 0,24.19048 0,24.19048 l 29.009669,16.53646 v -23.8125 z" id="path4571"
+            />
+            <path style="fill:#bbc1c1;stroke:#bbc1c1;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 73.327381,127.85565 28.909729,16.69104 5.52081,-3.18745 -29.357056,-16.9493 z" id="path4573" />
+            <path style="fill:#bbc1c1;stroke:#bbc1c1;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 107.75792,141.35924 v 24.01055 l -5.43784,3.13954 v -23.83374 z" id="path4575" />
+            <path style="fill:#b67519;stroke:#b67519;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 80.603422,125.5878 27.739968,-16.01568 7.73357,4.46498 -27.710448,15.99863 z" id="path4577" />
+            <path style="fill:#612211;stroke:#612211;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 116.07696,114.0371 1.61538,1.01461 -27.497772,16.20573 -1.828056,-1.22171 27.710448,-15.99863 v 0" id="path4642"
+            />
+            <path style="fill:#612211;stroke:#612211;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 125.4259,119.51669 1.61538,1.01461 -27.497773,16.20573 -1.828056,-1.22171 27.710449,-15.99863 v 0" id="path4642-1"
+            />
+            <path style="fill:#b67519;stroke:#b67519;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 89.952367,131.06739 27.739973,-16.01568 7.73356,4.46498 -27.710442,15.99863 z" id="path4577-4" />
+            <path style="fill:#b67519;stroke:#b67519;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 127.25049,120.52278 9.38786,5.58473 -28.86793,16.7727 -0.0125,-1.52097 -8.005165,-4.63073 z" id="path4716"
+            />
+            <path style="fill:#612211;stroke:#612211;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 136.63835,126.10751 -0.0945,5.19717 -28.82069,16.39472 0.0473,-4.81919 z" id="path4718" />
+            <path style="fill:#929395;stroke:#929395;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 107.48698,110.04352 -0.0473,-4.01599 30.28534,17.4814 -0.0945,24.56845 -15.30804,-8.50447 14.22135,-8.26823 0.0945,-5.19717 -28.295,-16.53539 z"
+              id="path4720" />
+            <path style="fill:#bbc1c1;stroke:#bbc1c1;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+              d="m 107.43968,106.02753 5.00824,-3.11831 30.43638,17.57246 v 24.71363 l -5.24563,3.02856 v -24.62045 z" id="path4722"
+            />
+          </g>
+        </g>
+      </svg>
+      <h2 *ngIf="!user">Welcome to qBench</h2>
+      <h2> Queing up at <br/>{{ place?.name }}</h2>
+      <div>
+        <span>Currently Queueing 
+          </span>
+        <span style="font-size:3em">{{ place?.currentlyWaiting }} <ion-icon name="md-people"></ion-icon></span>
+
+      </div>
+    </div>
+    <ng-container *ngIf="!user">
+      <div>
+        To get started, login below so that Restaurant know's who to reserve for.
+      </div>
+      <button ion-button (click)="login()" clear icon-left color="secondary" class="login-button">
+          <ion-icon class="login-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1C4.58 1 1 4.58 1 9s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 2.75c1.24 0 2.25 1.01 2.25 2.25S10.24 8.25 9 8.25 6.75 7.24 6.75 6 7.76 3.75 9 3.75zM9 14.5c-1.86 0-3.49-.92-4.49-2.33C4.62 10.72 7.53 10 9 10c1.47 0 4.38.72 4.49 2.17-1 1.41-2.63 2.33-4.49 2.33z"/></svg>
+          </ion-icon>
+        Sign in with Google 
+      </button>
+
+    </ng-container>
+    <ng-container *ngIf="user && !(yourQueue)">
+      <button ion-button (click)="addQueue()" clear color="secondary">Get you queue number
+      </button>
+    </ng-container>
+   
+    <ion-card *ngIf="yourQueue">
+      <ion-card-content>
+        <div class="card-content">
+          <h1>Queue # {{ yourQueue.queNumber}}</h1>
+          <ion-chip [class]="'status-'+yourQueue.status+' chip-md'">
+            <ion-label>{{ yourQueue.status }}</ion-label>
+          </ion-chip>
+          <span>Numbers front of the queue</span>
+          <ion-row class="ahead">
+            <ion-col>{{ place?.num1 > 0 ? place?.num1 : '-' }}</ion-col>
+            <ion-col>{{ place?.num2 > 0 ? place?.num2 : '-' }}</ion-col>
+            <ion-col>{{ place?.num3 > 0 ? place?.num13 : '-' }}</ion-col>
+          </ion-row>
+        </div>
+        <div class="action-buttons">
+
+          <button class="card-btn" icon-left ion-button color="danger" clear (click)="cancel(yourQueue)" *ngIf="yourQueue.status !== 'expired' && yourQueue.status !== 'cancelled'  && yourQueue.status !== 'complete'">
+              <ion-icon name="md-close"></ion-icon>
+              Cancel
+              </button>
+
+          <button class="card-btn" icon-left ion-button color="orange" clear (click)="delay(yourQueue)" *ngIf="yourQueue.status == 'waiting'">
+              <ion-icon name="md-timer"></ion-icon>
+              Delay
+              </button>
+
+          <button class="card-btn" icon-left ion-button color="green" clear (click)="addQueue()" *ngIf="yourQueue.status === 'expired' || yourQueue.status === 'cancelled' || yourQueue.status === 'complete'">
+              <ion-icon name="md-refresh"></ion-icon>
+              New
+              </button>
+
+        </div>
+      </ion-card-content>
+
+    </ion-card>
+  </div>
 </ion-content>
